@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
+import { v4 as uuidv4 } from 'uuid';
 import Todo from './Todo.js'
 
 export default function Landing() {
-
     const [todos, setTodos] = useState([]);
     const [text, setText] = useState("");
-
+    
     useEffect(() => {
         setText("")
         console.log(todos)
@@ -18,7 +18,7 @@ export default function Landing() {
     }
 
     function createTodo() {
-        setTodos(prevState => [...prevState, {content: text}]);
+        setTodos(prevState => [...prevState, {content: text, id: uuidv4()}]);
     };
 
     return (
@@ -30,7 +30,7 @@ export default function Landing() {
                 <button className="button todo-button ms-2" onClick={createTodo}>Create</button>
             </div>
             <div className="todo-list-container">
-                <Todo todos={todos} />
+                <Todo todos={todos} setTodos={setTodos} />
             </div>
         </Container>
     </div>
