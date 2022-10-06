@@ -1,20 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
 import { v4 as uuidv4 } from 'uuid';
-import Todo from './Todo.js'
+import TodoList from './TodoList.js'
 
 export default function Landing() {
     const [todos, setTodos] = useState([]);
+    const [filterTodos, setFilterTodos] = useState([...todos]);
     const [text, setText] = useState("");
     
     useEffect(() => {
         setText("");
-        console.log(todos);
+        setFilterTodos([...todos]);
     }, [todos]);
 
     function handleText(e) {
         setText(e.target.value);
-        console.log(e.target.value);
     };
 
     function createTodo() {
@@ -30,7 +30,10 @@ export default function Landing() {
                 <button className="button todo-button ms-2" onClick={createTodo}>Create</button>
             </div>
             <div className="todo-list-container">
-                <Todo todos={todos} setTodos={setTodos} />
+                <TodoList todos={todos} 
+                setTodos={setTodos} 
+                filterTodos={filterTodos} 
+                setFilterTodos={setFilterTodos} />
             </div>
         </Container>
     </div>
