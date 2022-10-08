@@ -8,7 +8,7 @@ export default function Landing() {
     const [todos, setTodos] = useState([]);
     const [filterTodos, setFilterTodos] = useState([...todos]);
     const [text, setText] = useState("");
-    const [editText, setEditText] = useState("")
+    const [editTodo, setEditTodo] = useState({})
     
     useEffect(() => {
         setText("");
@@ -25,7 +25,12 @@ export default function Landing() {
 
     return (
     <div>
-        <EditModal className="edit-modal-component" todos={todos} setTodos={setTodos} editText={editText}/>
+        <EditModal className="edit-modal-component" 
+            todos={todos} 
+            setTodos={setTodos} 
+            editTodo={editTodo}
+            setEditTodo={setEditTodo}
+            setFilterTodos={setFilterTodos} />
         <Container className="everything-else d-flex flex-column justify-content-center">
             <h1 className="pt-5 pb-5 d-flex justify-content-center">Landing Page</h1>
             <div className="d-flex justify-content-center mb-5" id="input-container">
@@ -37,8 +42,8 @@ export default function Landing() {
                 setTodos={setTodos} 
                 filterTodos={filterTodos} 
                 setFilterTodos={setFilterTodos}
-                editText={editText}
-                setEditText={setEditText} />
+                editTodo={editTodo}
+                setEditTodo={setEditTodo} />
             </div>
         </Container>
     </div>

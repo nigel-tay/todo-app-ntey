@@ -1,11 +1,16 @@
 import React from 'react';
 import { FaSave, FaWindowClose } from 'react-icons/fa';
 
-export default function EditModal({todos, setTodos, editText}) {
+export default function EditModal({todos, setTodos, editTodo, setEditTodo, setFilterTodos}) {
     
-    function confirmEdits(text) {
-        // capture what is within text area and setEditText
-        // find todo, and set that individual todo's content only
+    function confirmEdits(editedTodo) {
+        console.log(editedTodo);
+
+        const oldTodoIndex = todos.findIndex(todo => todo.id === editTodo.id);
+        todos.splice(oldTodoIndex, 1, editedTodo);
+        console.log(todos.splice(oldTodoIndex, 1, editedTodo));
+        setTodos([...todos]);
+        closeModal();
     }
 
     function closeModal() {
@@ -20,10 +25,12 @@ export default function EditModal({todos, setTodos, editText}) {
     return(
         <div className="edit-modal-container">
             <div className="d-flex justify-content-end">
-                <span className="save-button p-2" onClick={() => confirmEdits()}><FaSave /></span>
+                <span className="save-button p-2" onClick={() => confirmEdits(editTodo)}><FaSave /></span>
                 <span className="close-button p-2" onClick={closeModal}><FaWindowClose /></span>
             </div>
-            <textarea maxLength="50" className="edit-todo me-2" value={editText} />
+            <textarea maxLength="50" className="edit-todo me-2" 
+                onChange={(e) => setEditTodo({...editTodo, content: e.target.value})} 
+                value={editTodo.content} />
         </div>
     );
 };
