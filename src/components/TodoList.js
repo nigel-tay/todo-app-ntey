@@ -25,7 +25,7 @@ export default function TodoList({todos, setTodos, filterTodos, setFilterTodos, 
         // make display block, and blur out background
         const editModalComponent = document.querySelector(".edit-modal-container");
         const everythingElse = document.querySelector(".everything-else");
-        everythingElse.style.opacity = "0.5"
+        everythingElse.style.opacity = "0.1"
         everythingElse.style.zIndex = "-1";
         editModalComponent.style.display = "block"
         editModalComponent.style.zIndex = "1";
