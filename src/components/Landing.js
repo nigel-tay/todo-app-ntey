@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
 import { v4 as uuidv4 } from 'uuid';
 import TodoList from './TodoList.js'
+import EditModal from './EditModal.js';
 
 export default function Landing() {
     const [todos, setTodos] = useState([]);
     const [filterTodos, setFilterTodos] = useState([...todos]);
     const [text, setText] = useState("");
+    const [editText, setEditText] = useState("")
     
     useEffect(() => {
         setText("");
@@ -23,7 +25,8 @@ export default function Landing() {
 
     return (
     <div>
-        <Container className="d-flex flex-column justify-content-center">
+        <EditModal className="edit-modal-component" todos={todos} setTodos={setTodos} editText={editText}/>
+        <Container className="everything-else d-flex flex-column justify-content-center">
             <h1 className="pt-5 pb-5 d-flex justify-content-center">Landing Page</h1>
             <div className="d-flex justify-content-center mb-5" id="input-container">
                 <textarea maxLength="50" className="todo-input me-2" onChange={handleText} value={text} />
@@ -33,7 +36,9 @@ export default function Landing() {
                 <TodoList todos={todos} 
                 setTodos={setTodos} 
                 filterTodos={filterTodos} 
-                setFilterTodos={setFilterTodos} />
+                setFilterTodos={setFilterTodos}
+                editText={editText}
+                setEditText={setEditText} />
             </div>
         </Container>
     </div>

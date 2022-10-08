@@ -6,6 +6,33 @@
     height: 100vh;
 }
 
+// Edit Modal
+.edit-modal-container{
+    display: none; 
+    height: 250px;
+    width: 250px;
+    background-color: #FDFD96;
+    position: absolute;
+    margin: 25% 40%;
+
+    .save-button:hover {
+        color: red;
+    }
+
+    .close-button:hover {
+        color: red;
+    }
+
+
+    .edit-todo{
+        margin: 20% 35% 0 20%;
+        height: 150px;
+        width: 150px;
+        border: none;
+        background-color: #FDFD96;
+    }
+}
+
 // Todos
 .todo-container{
     width: 90%;
@@ -16,6 +43,10 @@
         border-radius: 10px;
         width: 200px;
         height: 200px;
+
+        .edit-button:hover {
+            color: red;
+        }
 
         .delete-button:hover {
             color: red;
