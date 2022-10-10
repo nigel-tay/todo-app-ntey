@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSave, FaWindowClose } from 'react-icons/fa';
 
-export default function EditModal({todos, setTodos, editTodo, setEditTodo, setFilterTodos}) {
+export default function EditModal({todos, setTodos, editTodo, setEditTodo}) {
     
     function confirmEdits(editedTodo) {
         console.log(editedTodo);

@@ -29,8 +29,7 @@ export default function Landing() {
             todos={todos} 
             setTodos={setTodos} 
             editTodo={editTodo}
-            setEditTodo={setEditTodo}
-            setFilterTodos={setFilterTodos} />
+            setEditTodo={setEditTodo} />
         <Container className="everything-else d-flex flex-column justify-content-center">
             <h1 className="pt-5 pb-5 d-flex justify-content-center">Landing Page</h1>
             <div className="d-flex justify-content-center mb-5" id="input-container">
